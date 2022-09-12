@@ -23,7 +23,7 @@ class SurveyTagExporter
     # `PG::Connection.internal_encoding` is set to `Encoding::UTF_8` by default.
     #
     pg_result = pg_conn.copy_data(query, PG::TextDecoder::String.new) do
-      while row = pg_conn.get_copy_data # rubocop:disable Lint/AssignmentInCondition
+      while row = pg_conn.get_copy_data
         csv_output.concat(row)
       end
     end
